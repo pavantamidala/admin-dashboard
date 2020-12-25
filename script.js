@@ -48,6 +48,7 @@ let userDetails = ["Name", "Product", "Date", "Status", "Send Mail"]
 let box = document.querySelector('#box')
 let table = document.createElement('table')
 let tableRowsArray = []
+
 window.addEventListener('load', function () {
     var tr = document.createElement('tr')
     for (let detail of userDetails) {
@@ -58,12 +59,12 @@ window.addEventListener('load', function () {
     // adding status and button property to each object
     for (let i = 0; i < usersData.length; i++) {
         for (let detail in usersData[i]) {
-
             usersData[i]["status"] = statusUpdate(usersData[i][detail])
             usersData[i]["mail"] = "<button class='btn'>Send</button>"
         }
     }
     tableRowsArray.push(tr)
+
     for (let i = 0; i < usersData.length; i++) {
         var row = document.createElement('tr')
         tableRowsArray.push(row)
@@ -81,11 +82,12 @@ window.addEventListener('load', function () {
     box.appendChild(table)
 })
 let str = "23/12/2020"
-
+//date extraction
 function extractDate(str) {
     let ans = str.split('/')
     return Number(ans[0])
 }
+// status assignment
 function statusUpdate(str) {
     let dateNum = extractDate(str)
     let date = new Date()
